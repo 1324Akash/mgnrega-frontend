@@ -20,7 +20,8 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [district, setDistrict] = useState("Madurai");
 
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+  // 🔗 Use your Render backend URL here
+  const API_URL = "https://mgnrega-backend-raqv.onrender.com";
 
   const districtData = {
     Madurai: [65, 78, 90, 80, 85],
@@ -78,7 +79,7 @@ function App() {
         console.error("Error fetching workers:", err);
         setLoading(false);
       });
-  }, [API_URL]);
+  }, []);
 
   const addWorker = async () => {
     if (!name.trim() || !village.trim()) {
@@ -216,10 +217,7 @@ function App() {
             </thead>
             <tbody>
               {workers.map((worker) => (
-                <tr
-                  key={worker._id}
-                  style={{ borderBottom: "1px solid #ddd" }}
-                >
+                <tr key={worker._id} style={{ borderBottom: "1px solid #ddd" }}>
                   <td style={{ padding: "10px" }}>{worker.name}</td>
                   <td style={{ padding: "10px" }}>{worker.village}</td>
                   <td>
